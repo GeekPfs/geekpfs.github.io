@@ -1,0 +1,21 @@
+--[[pod_format="raw",created="2025-11-22 01:19:21",modified="2025-11-22 01:19:21",revision=0]]
+mensagens={
+[[ainda ta mais ou menos,]].."\n"..[[mas juro que vai ficar legal]],10,
+
+[[
+eu amo tanto seu sorriso, 
+
+ foi a primeira coisa que
+ notei quando te conheci.
+]],8,
+
+
+[[
+
+mulher homem bicho sempre me lembra 
+voce.
+ 
+  quem me dera roer sua orelha <3
+]],12,
+[[bom dia amor]],8
+}
