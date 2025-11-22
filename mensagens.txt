@@ -21,6 +21,6 @@ voce.
  quando me conta o que faz,
  amo tudo o que voce cria.
 
-    seu mundo e lindo.
+--  seu mundo e lindo.  --
 ]],8
 }
