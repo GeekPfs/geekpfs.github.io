@@ -52,5 +52,16 @@ tanto tempo, quero poder ser o seu
 tambem.
 
 -- quero ser pra sempre seu lar --
-]],7
+]],7,
+[[
+eu amo seu jeito de cuidar de mim,
+mesmo quando sua mãe briga contigo
+pq ela acha que você me trata mal,
+não penso assim, me sinto cuidado.
+]],8,
+[[
+as vezes paro no meio do dia
+e percebo que eu to pensando 
+em você sem querer.
+]],10
 }
