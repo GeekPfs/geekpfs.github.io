@@ -1,68 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-  <title>Página Externa</title>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Wisp Space</title>
+
   <style>
-    body, html {
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
       height: 100%;
       overflow: hidden;
+      background: #000;
     }
 
     iframe {
       width: 100%;
       height: 100%;
       border: none;
+      display: block;
+      background: #000;
     }
 
-    /* Loader */
-    #loader {
+    .loading {
       position: fixed;
       inset: 0;
-      background: white;
       display: flex;
       align-items: center;
       justify-content: center;
+      color: white;
+      font-family: sans-serif;
+      background: #000;
       z-index: 9999;
     }
 
-    .spinner {
-      width: 40px;
-      height: 40px;
-      border: 4px solid rgba(0,0,0,.15);
-      border-top: 4px solid black;
-      border-radius: 50%;
-      animation: spin .7s linear infinite;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
+    iframe.loaded + .loading {
+      display: none;
     }
   </style>
 </head>
-
 <body>
-  <div id="loader">
-    <div class="spinner"></div>
-  </div>
 
   <iframe
-    id="proxyFrame"
-    src="https://frames-jade.vercel.app/"
+    id="WispSpace"
+    src="https://frames-jade.vercel.app/api/proxy/"
+    allowfullscreen
   ></iframe>
 
-  <script>
-    const frame = document.getElementById("proxyFrame");
-    const loader = document.getElementById("loader");
+  <div class="loading">
+    Carregando...
+  </div>
 
-    frame.onload = () => {
-      loader.remove();
+  <script>
+    const iframe = document.getElementById('WispSpace');
+
+    iframe.onload = () => {
+      iframe.classList.add('loaded');
     };
   </script>
+
 </body>
 </html>
