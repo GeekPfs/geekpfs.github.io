@@ -122,15 +122,15 @@ as vezes suas mordidas doeem,
 mas eu nao vivo sem elas
 ]],8,
 [[
-lembra de todas as vezes que bebemos
-juntos, sinto falta de fazer coisas
-assim
-]],7,
+sentir voce por dentro me deixa em 
+transe
+]],10,
 [[
 espero que durma bem hoje :)]],10,
 [[
-sentir voce por dentro me deixa em 
-transe
-]],10
+lembra de todas as vezes que bebemos
+juntos, sinto falta de fazer coisas
+assim com você
+]],7
 
 }
