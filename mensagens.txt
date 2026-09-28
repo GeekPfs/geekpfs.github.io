@@ -1,4 +1,174 @@
 --[[pod_format="raw",created="2025-11-22 01:19:21",modified="2025-11-22 01:19:21",revision=0]]
+
+t_or=t
+
+function t()
+	return t_or()-t_stampd
+end
+
+function make_conf()
+	return 
+	{
+		xe=rnd(480),
+		ye=rnd(230),
+		x=240,
+		y=340,
+		vy=0,
+		c=flr(rnd(14))+1,
+		o=rnd(5)+2,
+		cair=function(z)
+			z.vy+=(1-z.vy)*0.1
+			z.y+=z.vy
+			z.xv=z.x+z.o*sin(2*3*t()/z.o)
+			pset(z.xv,z.y,z.c)
+		end,
+		subir=function(z)
+			z.x+=(z.xe-z.x)*0.1
+			z.y+=(z.ye-z.y)*0.1
+			z.xv=z.x+z.o*sin(2*3*t()/z.o)
+			pset(z.xv,z.y,z.c)
+		end
+	}
+end
+
+
+
+
+
+
+
+function esperar(x)
+	for i=1,x do flip() end
+end
+function escrever(txt,esp,c)
+	for i=1,#txt do
+		cls()
+		sfx(2)
+		print(sub(txt,1,i),240-(i*2.5),135,c)
+		esperar(4)
+	end
+	esperar(esp)
+end
+
+txt="acabou"
+esperar(100)
+t_stampd=t_or()
+escrever(txt,30,7)
+
+c={}
+quant=1000
+for i=1,quant do
+	c[i]=make_conf()
+end
+	
+tm=0
+ti=t()
+
+while t()<7 do
+	cls()
+	print(txt,240-(#txt*2.5),135,7)
+	if (t()>4 and t()%0.5==0 and #txt<9) txt..="."
+	if tm<126 then
+		tm+=(127-tm)*0.2
+	else
+		tm=127
+	end
+	if t()-ti<0.9 then
+		for i=1,quant do
+			c[i]:subir()
+		end
+	else
+		for i=1,quant do
+			c[i]:cair()
+		end
+	end
+flip()
+end
+txt="espero que tenha gostado "
+escrever(txt,5,7)
+
+
+y=135
+t_stampd=t()
+yc=400
+while true do
+	mx,my,mc=mouse()
+	cls()
+	spr(1,231,yc)
+	if (t()%0.5==0) pal(8,flr(rnd(31)+1))
+	print(txt.."\^:001B1F0E04000000",240-((#txt+1)*2.5),y,7)
+	if t()>2.5 then
+		if (y>60) y-=2
+		if (yc>129) yc+=(129-yc)*0.05
+		if (yc>129 and yc<129.5) yc=129
+	end
+	if yc==129 then
+		if mx>231 and mx<249 and my>129 and my<145 and mc==1 then
+			pal(8,15)
+			spr(1,231,yc)
+			break
+		end
+	end
+	flip()
+end
+esperar(30)
+::a::
+tam=0
+x=400
+y=230
+txt=
+[[
+ Oi meu lar
+ 
+ Essa e a ultima carta. Entao queria que ela soasse bonita,
+ mas nao sou um bom escritor como voce, entao vou simplesmente agradecer.
+ 
+ Eu sou muito feliz por ter voce como lar,
+   mesmo mesmo. 
+ 
+ Quero ser pra sempre o seu refugio, 
+ assim como voce e o meu.
+
+ Nunca vou conseguir expressar o quanto eu te amo, 
+ mas um dia ainda vou te convencer.
+
+     Obrigado por tudo, meu amor.
+]]..""
+
+musica = unpod("b64:bHo0ABkBAACMCgAA-zBweHUAAygAAAQABA9AEAIOAAGgASACoA4ADxAADfDKAQIDQA8PkAQFBgdADJAICQoLQAyQDwwPDQ8ODEAM8P8BAOvwBKoBEAYPMBABD48QASAB8AACEAIPAPMbIA8hIAEwDxWQAQggD0hQAvCrDxgPKA--DxHwxQ-4Cg--D4AP9w8NAfAJQAAUID4AFQ49ADBA8MMzAC3wxjEAHw4wAP------jR--AQCs-wvID0AADzwADiAPOQ83DzUfNA4PMg80DzUvNBEADfALHzQOLR8yDgMNDzUt--8A8CD0AP8gIPQA8HBTANIQQA889C8A9C8PIPQvEwD-BgVAD0APPA85DzX0LDD0LD8g9Czw-wEA-_dQ-----5Y=")
+
+store("sfx/0.sfx",musica)
+
+carta=userdata("u8",400,230)
+desenho=
+
+--[[pod_type="gfx"]]unpod("b64:bHo0AOIEAAASBQAA8CFweHUAQyBaWgT-Gv----_xGP5HOB4Y-kAADjgOOP4EAP4pEA6I-gMQ-igKDxUAHmgLAPBkKSAeWP4EAE4A-iMADQ8WAC5IfgANMJ4Q-iQQDAAuOF4gVwB_AP4lIAwQLhheAAWHAP4sBRANDAQALgheALcA-isgHAQAjgDXAF4g-g8A-gBAHAB_ABcGpw8PBwD_FzDOMAwEDAB_APcBAP4XEAUQrhANABIA8QtuDw0XBucA-hcABBAdAH5ADRQAbgAHDx33ABQA8SAMDQANID6ABABuALcAVwD_FgAsEA3QDRBeBQcGlyBHAP4XPBANwC0QPgAHBicAVxIA8AEALPAADRANAC4QBicgRzA3EwDFJA8U8AEPDw0ALgAHFgDRBgAMBPAADAALEC4FFhUAEBArAPAA0BsAGwAKHgAHBhcFIEcwUwBQDAAE0AwXAGEuAAYNFzAVAPEDGAAPFDA7UCsAGwAOAA0AFhcwfwDyABgwWwALMCsACxAFHgAGJxUA8gIZIFsAC0A7AAwuDQY3IGcAVygAgBtAGxA_DUcQ7QDwFA4wTgowSwALEA0MMA0ABR4NFvcGAP4LCnAuQFsMgC4KAAYNEQDwJgxgDQAuUCuQTgAG9wcA-guQLgrwAG4A9wgQ-gmgLgAe0G4ABhcA9wUA-gmgDgAuBQsOIA1wFADzBQX3AgAXAP4JsC4AHgAukF4ABhcGEwDwBg0QHlAMHgAeDC6ADQBeDQAHBvcDBRkAoQoAPkCegB0APg0uAPILBQD_D0COkB0APhD3CRD_DkB_oB0QLhD3CgAMAIAAPhAXANcGd80A0ApukE0_EBcPDfcEDRcRANF_kD0APhAHDA3XDUcAEgDxA24QDQANUD0QHhAFBwwA1wVHBRcA8RBeAA4NEB1ADRANEB4QBgcN9wAGZwD_DQ0gfkANQB0A2AFADQD3AGgA8wAMMG5QDWAdAC4QDx0GAOcUAPAEXmAdUB0_EAYPDVcAhwUPEkcGFxcA8AFOHVAtQA0APhA3DCcGlxY3FgDwDAtATg1gLUANEB4gBwD3AgY3ABcACv4KME4dcIMAMB4QDYEA8SkAFkcGBxD_CjA_AA2AHUANIA4QFicGxwAHFjcGBwYA-gowLhANgB0wDTAOEAYAFwwnFocGDx0HBmMAYglALgA9YB0A8BsJABcNNwaXJjcGJwX_CEAuAC1wHTANYA8NJwAnAwWXJglnAP4IQB4KAB1OAPAycGcBAJcWlwb_B0AeAC1QBRAdMA1QBwUXFhcGBwDHA3cA-gYKQB4ADaAdIB1gJxYXAwYMlwAWBwZ3Cv4GUA4MDZA9AzANcBcUABEQmAHzGgdQCtANIA0wDRAGJxYHBgMApwAHJlcLAP4I8AQNIA1gJ0YAxyYXBjcQEQDxAyANAAcNF1YAxyZXAAcQ-gcN4BUA8D1QBgcAVuc2VwsHAAr_BvADDRAdEAUQBgcDEDYABwxHDABHDTYXAA8SDEcA-gbwAg0QHSANABYABgAHJg1nBlcAFxYnAAYDRwD_CIAdowDwHQAtICYHRgMXBsc2JwYQFwAGAP4I0D0ADQAdECYHVhcG1xZ3DAAK-gkN0A0AAgAwHUAmTQDwHAa3ABdGV0D_Bw0MQAVgDQANQA0FHlAnIGcQVlAG-ioQDoAnsAMM-v---y0=")
+
+set_draw_target(carta)
+	cls(15)
+	print(txt,5,5,32)
+	pal(15,7)
+	palt(0,false)
+	palt(26,true)
+	palt(10,true)
+	palt(14,true)
+	spr(desenho,300,130)
+	pal(15,15)
+	set_draw_target()
+	
+sfx(0)
+while true do
+	tam+=(1-tam)*0.05
+	sspr(carta,0,0,400,230,(240-(200*tam)),(135-(115*tam)),400*tam,230*tam)
+--	rectfill(240-((x/2)*tam),135-((y/2)*tam),240+((x/2)*tam),135+((y/2)*tam),15)
+	flip()
+end
+
+
+
+
+
+
 mensagens={
 [[ainda ta mais ou menos,]].."\n"..[[mas juro que vai ficar legal]],10,
 
