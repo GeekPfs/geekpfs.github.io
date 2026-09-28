@@ -1,5 +1,8 @@
 --[[pod_format="raw",created="2025-11-22 01:19:21",modified="2025-11-22 01:19:21",revision=0]]
 
+
+
+
 t_or=t
 
 function t()
@@ -135,9 +138,9 @@ txt=
      Obrigado por tudo, meu amor.
 ]]..""
 
-musica = unpod("b64:bHo0ABkBAACMCgAA-zBweHUAAygAAAQABA9AEAIOAAGgASACoA4ADxAADfDKAQIDQA8PkAQFBgdADJAICQoLQAyQDwwPDQ8ODEAM8P8BAOvwBKoBEAYPMBABD48QASAB8AACEAIPAPMbIA8hIAEwDxWQAQggD0hQAvCrDxgPKA--DxHwxQ-4Cg--D4AP9w8NAfAJQAAUID4AFQ49ADBA8MMzAC3wxjEAHw4wAP------jR--AQCs-wvID0AADzwADiAPOQ83DzUfNA4PMg80DzUvNBEADfALHzQOLR8yDgMNDzUt--8A8CD0AP8gIPQA8HBTANIQQA889C8A9C8PIPQvEwD-BgVAD0APPA85DzX0LDD0LD8g9Czw-wEA-_dQ-----5Y=")
+musica = unpod("b64:bHo0ABEBAACKCgAA-zBweHUAAygAAAQABA9AEAIOAAGgASACoA4ADxAADfDKAQIDQA8PkAQFBgdADJAICQoLQAyQDwwPDQ8ODEAM8P8BAOv-NaoBEAYPMBABIAEgAfAAAhACDhABIA8hIAEwDxKQAQggD0hQAg8R8KoPGA8oD-8PEfDFD-gKD-8PgA-3Dw0B8AkBEAYOPgACMEDwwzIAL-DGMAD------58f-wEArP8LyA9AAA88AA4gDzkPNw81HzQODzIPNA81LzQRAA3wCx80Di0fMg4DDQ81Lf--APAg9AD-ICD0APBwUwDSEEAPPPQvAPQvDyD0LxMA-wYFQA9ADzwPOQ819Cww9Cw-IPQs8P8BAP-nUP----_W")
 
-store("sfx/0.sfx",musica)
+musica:poke(0x80000)
 
 carta=userdata("u8",400,230)
 desenho=
@@ -156,13 +159,15 @@ set_draw_target(carta)
 	pal(15,15)
 	set_draw_target()
 	
-sfx(0)
+music(0,0,nil,0x80000)
 while true do
 	tam+=(1-tam)*0.05
 	sspr(carta,0,0,400,230,(240-(200*tam)),(135-(115*tam)),400*tam,230*tam)
 --	rectfill(240-((x/2)*tam),135-((y/2)*tam),240+((x/2)*tam),135+((y/2)*tam),15)
 	flip()
 end
+
+
 
 
 
